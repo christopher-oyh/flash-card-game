@@ -24,13 +24,15 @@ python -m venv venv
 
 4. Activate virtual environment:
 
-````sh
+```sh
 source venv/bin/activate
+```
 
 5. Install the required dependencies:
+
 ```sh
 pip install -r requirements.txt
-````
+```
 
 ## Usage
 
@@ -52,9 +54,20 @@ python3 flash_card_game.py
 
 <!-- Screenshot from images -->
 
+### Start Screen
+
 ![Screenshot](images/start-screen.png)
+
+### Game Screen
+
 ![Screenshot](images/game-screen.png)
+
+### Settings Screen
+
 ![Screenshot](images/settings-screen.png)
+
+### Help Screen
+
 ![Screenshot](images/help-screen.png)
 
 ## License
