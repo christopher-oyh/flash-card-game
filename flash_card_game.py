@@ -6,7 +6,7 @@ from view.start_view import StartView
 from view.tutorial_view import TutorialView
 from view.game_view import GameView
 from view.settings_view import SettingsView
-from controller.view_controller import ViewController
+# from controller.view_controller import ViewController
 
 
 class FlashCardGame(ctk.CTk):
@@ -18,7 +18,7 @@ class FlashCardGame(ctk.CTk):
         
         # Root Frame
         self.main_container = ctk.CTkFrame(self)
-        self.main_container.place(relx=0.5, rely=0.5, anchor='center')
+        self.main_container.pack(fill="both", expand=True)
         
         # Views
         self.views = {}

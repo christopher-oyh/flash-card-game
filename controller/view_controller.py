@@ -8,11 +8,11 @@ class ViewController(ctk.CTk):
     def __init__(self, *args, **kwargs):
         
         # Views
-        self.views = {}
-        self.views["start"] = StartView(self)
-        self.views["tutorial"] = TutorialView(self)
-        self.views["game"] = GameView(self)
-        self.views["settings"] = SettingsView(self)
+        # self.views = {}
+        # self.views["start"] = StartView(self)
+        # self.views["tutorial"] = TutorialView(self)
+        # self.views["game"] = GameView(self)
+        # self.views["settings"] = SettingsView(self)
         
         # Show the start view
         self.show_view("start")
