@@ -3,13 +3,20 @@ import threading
 import operator
 import random
 import time
-from controller.game_controller import GameController
+# from controller.game_controller import GameController
 
 class GameView(ctk.CTkFrame):
     def __init__(self, parent, controller):
         ctk.CTkFrame.__init__(self, parent)
-        # # Initialize the GameController
-        self.game_controller = GameController()    
+        
+        # initialize operations
+        self.operations = {
+            "+": operator.add,
+            "-": operator.sub,
+            "*": operator.mul,
+            "/": operator.truediv
+        }
+        self.combinations = set()
         
         # Initialize score
         self.score = 0
@@ -44,7 +51,7 @@ class GameView(ctk.CTkFrame):
         
         # Submit Button
         self.submit_button = ctk.CTkButton(self, text="Submit", font=("Arial", 18), command=self.check_answer)    
-        self.submit_button.pack(pady=10)
+        # self.submit_button.pack(pady=10)
         
         # End Button
         self.end_button = ctk.CTkButton(self, text="End Game", font=("Arial", 18) , command=lambda: controller.show_view("start"))
@@ -53,6 +60,14 @@ class GameView(ctk.CTkFrame):
         # Start/Restart the game
         self.restart_button = ctk.CTkButton(self, text="Start/Restart", font=("Arial", 18), command=self.start_game)
         self.restart_button.pack(pady=10)
+    
+    def game_over(self):
+        # Render the game over view
+        self.title.configure(text="Game Over")
+        self.question_label.configure(text="Your final score is: {}".format(self.score))
+        self.submit_button.pack_forget()
+        
+        
     
     def update_timer(self):
         elapsed_time = time.time() - self.start_time
@@ -64,6 +79,7 @@ class GameView(ctk.CTkFrame):
             # Return to the start view
             # self.controller.show_view("start")
             print("Time is up")
+            self.game_over()
         else:
             # Call update_timer again after 1000 milliseconds (1 second)
             self.after(1000, self.update_timer)
@@ -75,11 +91,19 @@ class GameView(ctk.CTkFrame):
         self.update_values()
         self.update_timer()
         
+        self.end_button.pack_forget()
+        self.restart_button.pack_forget()
+        # show submit button
+        self.submit_button.pack(pady=10)
+        self.end_button.pack(pady=10)
+        self.restart_button.pack(pady=10)
+        
 
         
     def update_values(self):
         print("Updating values")
         # Update values to the GUI
+        self.title.configure(text="Flash Card Game")
         self.score_label.configure(text="Score: {}".format(self.score))
         self.answer = self.answer_entry.get()
         self.answer_entry.delete(0, ctk.END)
@@ -88,11 +112,17 @@ class GameView(ctk.CTkFrame):
     def new_question(self):
         self.num1 = random.randint(0, 12)
         self.num2 = random.randint(0, 12)
-        self.op = random.choice(list(self.game_controller.operations.keys()))
+        self.op = random.choice(list(self.operations.keys()))
         
         # Ensure division is valid
         if self.op == '/' and self.num2 == 0:
             return self.new_question()
+        
+        # Ensure combination hasn't been used
+        if (self.num1, self.num2, self.op) in self.combinations:
+            return self.new_question()
+        
+        self.combinations.add((self.num1, self.num2, self.op))
         # print("New Question", self.num1, self.op, self.num2)
         self.question_label.configure(text="Question: {} {} {}".format(self.num1, self.op, self.num2))
 

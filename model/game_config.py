@@ -1,13 +1,13 @@
-OPERATORS = {
-    '+': 'add',
-    '-': 'sub',
-    '*': 'mul',
-    '/': 'truediv',
-}
+# OPERATORS = {
+#     '+': 'add',
+#     '-': 'sub',
+#     '*': 'mul',
+#     '/': 'truediv',
+# }
 
-VAlUE_RANGE = (0, 12)
+# VAlUE_RANGE = (0, 12)
 
-NUM_QUESTIONS = 10
+# NUM_QUESTIONS = 10
 
-TIMER = 60
+# TIMER = 60
 
