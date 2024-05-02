@@ -40,12 +40,6 @@ Run the game:
 python3 flash_card_game.py
 ```
 
-Alternatively, you can run the game using the package .exe file:
-
-```sh
-flash_card_game.exe
-```
-
 ## Features
 
 - Randomly generated math questions
@@ -53,6 +47,15 @@ flash_card_game.exe
 - Score tracking
 - Timer
 - Custom GUI
+
+## Screenshots
+
+<!-- Screenshot from images -->
+
+![Screenshot](images/start-screen.png)
+![Screenshot](images/game-screen.png)
+![Screenshot](images/settings-screen.png)
+![Screenshot](images/help-screen.png)
 
 ## License
 

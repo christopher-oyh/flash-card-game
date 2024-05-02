@@ -33,8 +33,8 @@ class FlashCardGame(ctk.CTk):
         self.views["settings"] = SettingsView(parent=self.main_container, controller=self)
         
         # Show the start view
-        # self.show_view("start")
-        self.show_view("tutorial")
+        self.show_view("start")
+        # self.show_view("tutorial")
         
     def show_view(self, view_name):
         # Hide all views
