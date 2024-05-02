@@ -20,6 +20,11 @@ class FlashCardGame(ctk.CTk):
         self.main_container = ctk.CTkFrame(self)
         self.main_container.pack(fill="both", expand=True)
         
+        # Center the main container
+        self.main_container.grid_rowconfigure(0, weight=1)
+        self.main_container.grid_columnconfigure(0, weight=1)
+        
+        
         # Views
         self.views = {}
         self.views["start"] = StartView(parent=self.main_container, controller=self)
@@ -28,7 +33,8 @@ class FlashCardGame(ctk.CTk):
         self.views["settings"] = SettingsView(parent=self.main_container, controller=self)
         
         # Show the start view
-        self.show_view("start")
+        # self.show_view("start")
+        self.show_view("tutorial")
         
     def show_view(self, view_name):
         # Hide all views

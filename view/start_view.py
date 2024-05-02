@@ -5,6 +5,10 @@ class StartView(ctk.CTkFrame):
         ctk.CTkFrame.__init__(self, parent)
         # self.configure(bg="red")
         
+        # Add Padding to Top
+        self.top_padding = ctk.CTkLabel(self, text="", font=("Arial", 24))
+        self.top_padding.pack(pady=50)
+        
         # Button
         start_button = ctk.CTkButton(self, text="Start", font=("Arial", 18), command=lambda: controller.show_view("game"))
         start_button.pack(pady=10)
