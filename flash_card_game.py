@@ -16,16 +16,16 @@ class FlashCardGame(ctk.CTk):
         self.geometry(f"{AppConfig.WINDOW_WIDTH}x{AppConfig.WINDOW_HEIGHT}")
         # self.configure(bg=AppConfig.BACKGROUND_COLOR)
         
-        # # Root Frame
-        # main_container = ctk.CTkFrame(self)
-        # main_container.pack(fill="both", expand=True)
+        # Root Frame
+        self.main_container = ctk.CTkFrame(self)
+        self.main_container.place(relx=0.5, rely=0.5, anchor='center')
         
         # Views
         self.views = {}
-        self.views["start"] = StartView(parent=self, controller=self)
-        self.views["tutorial"] = TutorialView(parent=self, controller=self)
-        self.views["game"] = GameView(parent=self, controller=self)
-        self.views["settings"] = SettingsView(parent=self, controller=self)
+        self.views["start"] = StartView(parent=self.main_container, controller=self)
+        self.views["tutorial"] = TutorialView(parent=self.main_container, controller=self)
+        self.views["game"] = GameView(parent=self.main_container, controller=self)
+        self.views["settings"] = SettingsView(parent=self.main_container, controller=self)
         
         # Show the start view
         self.show_view("start")
