@@ -69,7 +69,3 @@ python3 flash_card_game.py
 ### Help Screen
 
 ![Screenshot](images/help-screen.png)
-
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
